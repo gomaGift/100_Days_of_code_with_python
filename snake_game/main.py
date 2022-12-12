@@ -2,8 +2,6 @@ from turtle import Screen
 from snake import Snake
 from food import Food
 from scoreboard import ScoreBoard
-
-
 import time
 
 screen = Screen()
@@ -17,6 +15,7 @@ snake = Snake()
 food = Food()
 scoreboard = ScoreBoard()
 
+# keyboard control keys
 screen.onkey(key="Up", fun=snake.up)
 screen.onkey(key="Down", fun=snake.down)
 screen.onkey(key="Left", fun=snake.left)
