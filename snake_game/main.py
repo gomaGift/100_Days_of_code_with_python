@@ -15,11 +15,16 @@ snake = Snake()
 food = Food()
 scoreboard = ScoreBoard()
 
+
 # keyboard control keys
-screen.onkey(key="Up", fun=snake.up)
-screen.onkey(key="Down", fun=snake.down)
-screen.onkey(key="Left", fun=snake.left)
-screen.onkey(key="Right", fun=snake.right)
+def key_strokes():
+    screen.onkey(key="Up", fun=snake.up)
+    screen.onkey(key="Down", fun=snake.down)
+    screen.onkey(key="Left", fun=snake.left)
+    screen.onkey(key="Right", fun=snake.right)
+
+
+key_strokes()
 
 game_on = True
 while game_on:
@@ -35,13 +40,15 @@ while game_on:
 
     # detect snake collision with the wall
     if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
-        game_on = False
-        scoreboard.game_over()
+        scoreboard.reset_scoreboard()
+        snake.reset_snake()
+        food.reset()
 
     # detect snake collision with any segment of its tail
     for part in snake.parts[1:]:
         if snake.head.distance(part) < 10:
-            game_on = False
-            scoreboard.game_over()
+            scoreboard.reset_scoreboard()
+            snake.reset_snake()
+            food.reset()
 
 screen.exitonclick()

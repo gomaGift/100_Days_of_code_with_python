@@ -1,3 +1,4 @@
+import time
 import turtle as t
 
 STARTING_POSITION = [(0, 0), (-20, 0), (-40, 0)]
@@ -17,15 +18,19 @@ class Snake:
             part.color("white")
             part.penup()
             part.goto(i)
+            self.sleep = 2
             self.parts.append(part)
         self.head = self.parts[0]
+        self.head.color("green")
 
     def move_func(self):
+        time.sleep(self.sleep)
         for i in range(len(self.parts) - 1, 0, -1):
             x_cod = self.parts[i - 1].xcor()
             y_cod = self.parts[i - 1].ycor()
             self.parts[i].goto(x_cod, y_cod)
         self.head.forward(MOVE_DISTANCE)
+        self.sleep = 0
 
     # screen control functions
     def up(self):
@@ -51,3 +56,9 @@ class Snake:
         # take the newly created segment to the current position of the last segment of the snake
         part.goto(self.parts[-1].pos())
         self.parts.append(part)
+
+    def reset_snake(self):
+        for seg in self.parts:
+            seg.goto(-1000, 1000)
+        self.parts.clear()
+        self.__init__()

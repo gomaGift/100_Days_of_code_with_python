@@ -71,7 +71,7 @@ window.config(padx=100, pady=100, bg=GREEN)
 
 canvas = Canvas()
 canvas.config(width=200, height=223, bg=GREEN, highlightthickness=0)
-bg_image = PhotoImage(file="tomato.png")
+bg_image = PhotoImage(file="pomodolo_timer/tomato.png")
 canvas.create_image(100, 110, image=bg_image)
 text_id = canvas.create_text(100, 130, text="00:00", font=(FONT_NAME, 20, "bold"), fill="white")
 canvas.grid(row=1, column=1)
@@ -89,3 +89,4 @@ checkmark = Label(text=mark, fg=YELLOW, bg=GREEN, font=(FONT_NAME, 15))
 checkmark.grid(row=3, column=1)
 
 window.mainloop()
+gi
